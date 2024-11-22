@@ -7,7 +7,11 @@ import Table from "../../ui/Table";
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
 import Menus from "../../ui/Menus";
-import { HiEye } from "react-icons/hi2";
+import {
+  HiEllipsisVertical,
+  HiEye,
+  HiArrowDownOnSquare,
+} from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { bookings } from "../../data/data-bookings";
 
@@ -95,6 +99,15 @@ function BookingRow({
           >
             See details
           </Menus.Button>
+
+          {status === "unconfirmed" && (
+            <Menus.Button
+              icon={<HiArrowDownOnSquare />}
+              onClick={() => navigate(`/checkin/${bookingId}`)}
+            >
+              Check in
+            </Menus.Button>
+          )}
         </Menus.List>
       </Menus.Menu>
     </Table.Row>
